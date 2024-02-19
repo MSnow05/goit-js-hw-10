@@ -1,8 +1,8 @@
-const baseUrl = 'https://restcountries.com/v2/name';
-export function fetchCountries(name) {
-    return axios.get(`${baseUrl}/${name}?fields=name.official,capital,population,flags.svg,languages`).then((response) => response.data);
-}
-import notiflix from 'notiflix';
+
+import { fetchCountries } from './fetchCountries';
+import debounce from 'lodash.debounce';
+import Notiflix from 'notiflix';
+
 export function renderNotification(message, priority) {
     notiflix.Notify.failure(message);
     if (message.includes('404')) {
