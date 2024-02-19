@@ -24,7 +24,7 @@
     <script>
         const input = document.getElementById('search-box');
         const list = document.getElementById('country-list');
-
+        const info = document.querySelector('.country-info');
         const debouncedFetch = _.debounce((name) => {
             fetchCountries(name)
                 .then((countries) => {
