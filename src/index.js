@@ -3,11 +3,10 @@ import { fetchCountries } from './fetchCountries';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 
-// Stałe
-const searchBox = document.querySelector('#search-box');
-const countryList = document.querySelector('#country-list');
-const countryInfo = document.querySelector('#country-info');
-const container = document.querySelector('.container'); // Container
+const inputEl = document.getElementById('search-box');
+const listEl = document.querySelector('.country-list');
+const info = document.querySelector('.country-info');
+
 
 const handleSearchCountry = event => {
     const searchCountry = event.target.value.trim();
