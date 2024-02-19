@@ -9,97 +9,52 @@ const countryList = document.querySelector('#country-list');
 const countryInfo = document.querySelector('#country-info');
 const container = document.querySelector('.container'); // Container
 
-// Funkcja czyszcząca zawartość container
-function clearContainer() {
-  countryList.innerHTML = '';
-  countryInfo.innerHTML = '';
-}
-
-// Funkcja do wyświetlania listy krajów
-function showCountryList(countries) {
-  clearContainer(); // Wyczyść istniejącą zawartość
-  if (countries.length > 10) {
-    Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
-    return;
-  }
-  countries.forEach(country => {
-    const listItem = document.createElement('li');
-    listItem.classList.add('country-list-item');
-    const flag = document.createElement('img');
-    flag.src = country.flags.svg;
-    flag.alt = `${country.name.common} flag`;
-    flag.classList.add('country-flag');
-    const name = document.createElement('h1'); 
-    name.classList.add('country-name');
-    name.textContent = country.name.common;
-    listItem.appendChild(flag);
-    listItem.appendChild(name);
-    countryList.appendChild(listItem);
-  });
-}
-
-// Funkcja do wyświetlania informacji o kraju
-const showCountryInfo = function showCountryInfo(country) {
-  clearContainer(); // Wyczyść istniejącą zawartość
-  const card = document.createElement('div');
-  card.classList.add('country-info-card');
-
-  // Dodanie flagi
-  const flag = document.createElement('img');
-  flag.src = country.flags.svg;
-  flag.alt = `${country.name.common} flag`;
-  flag.classList.add('country-flag');
-  card.appendChild(flag);
-
-  // Dodanie nazwy kraju
-  const name = document.createElement('span'); 
-  name.classList.add(`${'country-name'}`);
-  name.textContent = country.name.common;
-  card.appendChild(name);
-
-  // Dodanie sekcji z detalami
-  const details = document.createElement('ul');
-  details.classList.add('country-details');
-
-  // Dodanie stolicy
-  const capital = document.createElement('li');
-  capital.innerHTML = `<span>Capital: </span>${country.capital}`;
-  details.appendChild(capital);
-
-  // Dodanie populacji
-  const population = document.createElement('li');
-  population.innerHTML = `<span>Population: <span>${country.population}`;
-  details.appendChild(population);
-
-  // Dodanie języków
-  const languages = document.createElement('li');
-  languages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(', ')}`;
-  details.appendChild(languages);
-
-  // Dodanie sekcji detali do karty
-  card.appendChild(details);
-
-  // Dodanie karty do kontenera
-  countryInfo.appendChild(card);
-}
-
-// Obsługa zdarzenia input
-searchBox.addEventListener('input', debounce(async () => {
-  const name = searchBox.value.trim();
-  if (!name) {
-    return;
-  }
-  try {
-    const countries = await fetchCountries(name);
-    if (countries.length === 1) {
-      showCountryInfo(countries[0]);
-      countryList.textContent = '';
-    } else if (countries.length > 1) {
-      showCountryList(countries);
-      countryInfo.textContent = '';
+const handleSearchCountry = event => {
+    const searchCountry = event.target.value.trim();
+    listEl.innerHTML = '';
+  
+    if (searchCountry !== '') {
+      fetchCountries(searchCountry)
+        .then(data => {
+          if (2 <= data.length && data.length <= 10) {
+            const markup = data
+              .map(
+                country =>
+                  `<li class= "list-item"><img clas = "flag" src=${country.flags.png} width = 80px>  ${country.name.common} </li>`
+              )
+              .join('');
+  
+            listEl.insertAdjacentHTML('beforeend', markup);
+          }
+          if (data.length > 10) {
+            Notiflix.Notify.info(
+              'Too many matches found. Please enter a more specific name.'
+            );
+          }
+          if (data.length === 1) {
+            const countryInfo = data
+              .map(
+                country =>
+                  `<h2><img clas = "flag" src=${
+                    country.flags.png
+                  } width = 80px>  ${country.name.common} </h2>
+                  <p>Capital: ${country.capital}</p>
+                  <p>Population: ${country.population}</p>
+                  <p>Languages: ${Object.values(country.languages)}</p>`
+              )
+              .join('');
+  
+            listEl.insertAdjacentHTML('beforeend', countryInfo);
+          }
+        })
+        .catch(error => {
+          Notiflix.Notify.failure('Oops, there is no country with that name');
+        });
     }
-  } catch (error) {
-    clearContainer();
-    Notiflix.Notify.failure('Oops, there is no country with that name');
-  }
-}, 300));
+  };
+  const DEBOUNCE_DELAY = 300;
+  
+  inputEl.addEventListener(
+    'input',
+    debounce(handleSearchCountry, DEBOUNCE_DELAY)
+  );
