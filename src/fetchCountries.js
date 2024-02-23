@@ -1,11 +1,10 @@
-const URL = 'https://restcountries.com/v3.1/name/';
-const FIELDS = 'fields=name,capital,population,flags,languages';
+export default function fetchCountries(name) {
+  const url = `https://restcountries.com/v3.1/name/${name}?fields=name.official,capital,population,flags.svg,languages ⁠`;
 
-export async function fetchCountries(name) {
-  const response = await fetch(`${URL}${name}?${FIELDS}`);
-  if (response.ok) {
-    return await response.json();
-  } else {
-    throw new Error('Country not found');
-  }
+  return fetch(url)
+      .then(response => response.json())
+      .catch(error => {
+          console.error('Error fetching data:', error);
+          throw error;
+      });
 }
