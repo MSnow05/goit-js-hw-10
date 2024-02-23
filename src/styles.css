@@ -9,23 +9,42 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #e4f6e3f1;
   color: #ab1818;
-  line-height: 2;
+  line-height: 1;
   
-}
-
-#search-box {
-  font: inherit;
-  padding: 8px;
-  max-width: 320px;
-  margin-bottom: 16px;
-}
-
-.country-list {
-  font-size: 40px;
-  list-style: none;
-}
-.list-item {
-  display: flex;
-  gap: 10;
-  margin-bottom: 10px;
-}
+  }
+  
+  #search-box {
+    font-size: large;
+    padding: 20px;
+    max-width: 800px;
+    margin-bottom: 30px;
+  }
+  
+  .country-flag {
+    max-width: auto;
+    max-height: 30px;
+    margin-right: 10px;
+  }
+  
+  .country-list {
+      padding: 2;
+  }
+  
+  .country-list-item {
+    display: flex;
+    align-items: center;
+    font-size: 30px; 
+  }
+  .country-name {
+    font-size: 40px; 
+  }
+  
+  .country-info-item {
+    display: flex;
+    align-items: left;
+  }
+  
+  .country-info-list {
+    list-style: none;
+    padding: 0;
+  }
