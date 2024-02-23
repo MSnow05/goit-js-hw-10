@@ -1,20 +1,16 @@
 import { fetchCountries } from './fetchCountries';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
-
 const searchBox = document.querySelector('#search-box');
 const countryList = document.querySelector('#country-list');
 const countryInfo = document.querySelector('#country-info');
-const container = document.querySelector('.container'); 
-
+const container = document.querySelector('.container');
 function clearContainer() {
   countryList.innerHTML = '';
   countryInfo.innerHTML = '';
 }
-
-
 function showCountryList(countries) {
-  clearContainer(); 
+  clearContainer();
   if (countries.length > 10) {
     Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
     return;
@@ -34,44 +30,33 @@ function showCountryList(countries) {
     countryList.appendChild(listItem);
   });
 }
-
-
 const showCountryInfo = function showCountryInfo(country) {
-  clearContainer(); 
+  clearContainer();
   const card = document.createElement('div');
   card.classList.add('country-info-card');
-
-
   const flag = document.createElement('img');
   flag.src = country.flags.svg;
   flag.alt = `${country.name.common} flag`;
   flag.classList.add('country-flag');
   card.appendChild(flag);
-
   const name = document.createElement('span'); 
   name.classList.add(`${'country-name'}`);
   name.textContent = country.name.common;
   card.appendChild(name);
-
   const details = document.createElement('ul');
   details.classList.add('country-details');
-
   const capital = document.createElement('li');
   capital.innerHTML = `<span>Capital: </span>${country.capital}`;
   details.appendChild(capital);
-
   const population = document.createElement('li');
   population.innerHTML = `<span>Population: <span>${country.population}`;
   details.appendChild(population);
-
   const languages = document.createElement('li');
   languages.innerHTML = `<span>Languages: </span>${Object.values(country.languages).join(', ')}`;
   details.appendChild(languages);
   card.appendChild(details);
-
   countryInfo.appendChild(card);
 }
-
 searchBox.addEventListener('input', debounce(async () => {
   const name = searchBox.value.trim();
   if (!name) {
@@ -82,7 +67,7 @@ searchBox.addEventListener('input', debounce(async () => {
     if (countries.length === 1) {
       showCountryInfo(countries[0]);
       countryList.textContent = '';
-    } else if (countries.length > 1) {
+    } else if (countries.length > 1 && countries.length <= 10) {
       showCountryList(countries);
       countryInfo.textContent = '';
     }
