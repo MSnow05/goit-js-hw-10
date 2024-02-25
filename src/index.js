@@ -19,7 +19,7 @@ function handleSearch() {
     fetchCountries(searchTerm)
         .then(data => {
             if (data.length > 10) {
-                showNotification('Too many matches found. Please enter a more specific name.');
+                Notflix.Notify.info('Too many matches found. Please enter a more specific name.');
             } else if (data.length >= 2 && data.length <= 10) {
                 displayCountryList(data);
             } else if (data.length === 1) {
