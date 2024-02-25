@@ -40,7 +40,6 @@ function clearResults() {
 }
 
 function displayCountryList(countries) {
-    console.log(`Country Data:`, country);
     clearResults();
 
     countries.forEach(country => {
@@ -68,5 +67,5 @@ function displayCountryInfo(country) {
 }
 
 function showNotification(message) {
-    Notflix.Notify.Failure(message);
+    Notiflix.Notify.Failure(message);
 }
