@@ -1,12 +1,12 @@
-import fetchCountries from './fetchCountries.js';
-import _ from 'lodash.debounce';
+import {fetchCountries} from './fetchCountries.js';
+import debounce from 'lodash.debounce';
 import notiflix from 'notiflix';
 
 const searchBox = document.getElementById('search-box');
 const countryList = document.getElementById('country-list');
 const countryInfo = document.getElementById('country-info');
 
-searchBox.addEventListener('input', _.debounce(handleSearch, 300));
+searchBox.addEventListener('input', debounce(handleSearch, 300));
 
 function handleSearch() {
     const searchTerm = searchBox.value.trim();
