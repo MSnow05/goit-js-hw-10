@@ -19,13 +19,14 @@ function handleSearch() {
     fetchCountries(searchTerm)
         .then(data => {
             if (data.length > 10) {
-                showNotification('Too many matches found. Please enter a more specific name.');
-            } else if (data.length >= 2 && data.length <= 10) {
-                displayCountryList(data);
-            } else if (data.length === 1) {
-                displayCountryInfo(data[0]);
-            } else {
-                showNotification('Oops, there is no country with that name');
+                Notiflix.Notify.info('Too many matches found. Please enter a more specific name.');
+            } if (data.length >= 2 && data.length <= 10) {
+                return displayCountryList(data);
+            } if (data.length === 1) {
+               return displayCountryInfo(data[0]);
+            } if(data.status === 404){
+                Notiflix.Notify.failure('Oops, there is no country with that name');
+        return;
             }
         })
         .catch(error => {
