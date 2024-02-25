@@ -40,6 +40,7 @@ function clearResults() {
 }
 
 function displayCountryList(countries) {
+    console.log(`Country Data:`, country);
     clearResults();
 
     countries.forEach(country => {
