@@ -52,6 +52,7 @@ function displayCountryList(countries) {
 }
 
 function displayCountryInfo(country) {
+    console.log(`Displaying country info:`, country);
     clearResults();
 
     const countryCard = document.createElement('div');
