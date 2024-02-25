@@ -1,6 +1,6 @@
 import { fetchCountries } from './fetchCountries.js';
 import debounce from 'lodash.debounce';
-import notiflix from 'notiflix';
+import Notflix from 'notiflix';
 
 const searchBox = document.getElementById('search-box');
 const countryList = document.getElementById('country-list');
@@ -67,5 +67,5 @@ function displayCountryInfo(country) {
 }
 
 function showNotification(message) {
-    notiflix.Notify.Failure(message);
+    Notflix.Notify.Failure(message);
 }
