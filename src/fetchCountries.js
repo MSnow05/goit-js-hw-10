@@ -1,4 +1,5 @@
-const getURL = 'https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages';
+const getURL = 'https://restcountries.com/v3.1/name/';
+const FIELDS = 'fields=name,capital,population,flags,languages';
 
 export async function fetchCountries(name) {
   const response = await fetch(`${getURL}${name}?${FIELDS}`);

@@ -29,12 +29,7 @@ function handleSearch() {
         return;
             }
         })
-        .catch(error => {
-            showNotification('Error fetching data. Please try again.');
-            console.error('Error handling search:', error);
-        });
-}
-
+    }
 function clearResults() {
     countryList.innerHTML = '';
     countryInfo.innerHTML = '';
@@ -58,15 +53,13 @@ function displayCountryInfo(country) {
 
     const countryCard = document.createElement;
     countryCard.innerHTML = `
-        <h1><img src="${country.flags.svg}" alt="${country.name.official}" width="24px"/>
+        <h1><img src="${country.flags.svg}" alt="${country.name.official}" width="24px"/><h>
         <h2>${country.name.official}</h2>
         <div><p>Capital: ${country.capital}</p></div>
         <div><p>Population: ${country.population}</p></div>
-        <div><p>Languages: ${country.languages.join(', ')}</p></div
+        <div><p>Languages: ${Array.isArray(country.languages) ? country.languages.join(', ') : country.languages}</p></div>
     `;
     countryInfo.appendChild(countryCard);
 }
 
-function showNotification(message) {
-    Notiflix.Notify.Failure(message);
-}
+
