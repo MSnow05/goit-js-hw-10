@@ -53,11 +53,11 @@ function displayCountryInfo(country) {
 
     const countryCard = document.createElement;
     countryCard.innerHTML = `
-        <h1><img src="${country.flags.svg}" alt="${country.name.official}" width="24px"/><h>
+        <h1><img src="${country.flags.svg}" alt="${country.name.official}" width="24px"/><h1>
         <h2>${country.name.official}</h2>
         <div><p>Capital: ${country.capital}</p></div>
         <div><p>Population: ${country.population}</p></div>
-        <div><p>Languages: ${Array.isArray(country.languages) ? country.languages.join(', ') : country.languages}</p></div>
+        <div><p>Languages: ${Array.isArray(country.languages)?country.languages.join(', '):country.languages}</p></div>
     `;
     countryInfo.appendChild(countryCard);
 }
