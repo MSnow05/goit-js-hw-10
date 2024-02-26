@@ -47,7 +47,7 @@ function displayCountryList(countries) {
     });
 }
 
- const displayCountryInfo = function displayCountryInfo(country) {
+function displayCountryInfo(country) {
      console.log(`Displaying country info:`, country);
      clearResults();
      const countryCard = document.createElement('div');
