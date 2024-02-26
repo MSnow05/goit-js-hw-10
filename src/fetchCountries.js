@@ -6,6 +6,6 @@ export async function fetchCountries(name) {
   if (response.ok) {
     return await response.json();
   } else {
-    throw new Error('Country not found');
+    throw new Error('Oops, there is no country with that name');
   }
 }
