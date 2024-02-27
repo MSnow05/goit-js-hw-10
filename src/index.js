@@ -23,7 +23,7 @@ function handleSearch() {
             } if (data.length >= 2 && data.length <= 10) {
                 return displayCountryList(data);
             } if (data.length === 1) {
-               return displayCountryInfo(data[0]);
+               return displayCountryInfo(data);
             } if(data.status === 404){
                 Notiflix.Notify.failure('Oops, there is no country with that name');
         return;
