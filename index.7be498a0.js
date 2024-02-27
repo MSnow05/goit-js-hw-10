@@ -4,5 +4,5 @@ function t(t){return t&&t.__esModule?t.default:t}var e,i,a="undefined"!=typeof g
         <div><p>Capital: ${t.capital}</p></div>
       <div><p>Population: ${t.population}</p></div>
      <div><p>Languages: ${Array.isArray(t.languages)?t.languages.join(", "):t.languages}</p></div>
-    `,C.appendChild(e)}(e[0]);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300));
-//# sourceMappingURL=index.6573d293.js.map
+    `,C.appendChild(e)}(e);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300));
+//# sourceMappingURL=index.7be498a0.js.map

@@ -4,5 +4,5 @@
         <div><p>Capital: ${t.capital}</p></div>
       <div><p>Population: ${t.population}</p></div>
      <div><p>Languages: ${Array.isArray(t.languages)?t.languages.join(", "):t.languages}</p></div>
-    `,C.appendChild(e)}(e[0]);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300))}();
-//# sourceMappingURL=index.1348e40d.js.map
+    `,C.appendChild(e)}(e);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300))}();
+//# sourceMappingURL=index.0ecf5ec8.js.map
