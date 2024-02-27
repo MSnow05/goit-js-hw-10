@@ -56,9 +56,7 @@ function displayCountryInfo(country) {
         <h2>${country.name.official}</h2>
         <div><p>Capital: ${country.capital}</p></div>
       <div><p>Population: ${country.population}</p></div>
-     <div><p>Languages: ${Array.isArray(country.languages) ? country.languages.join(', ') : country.languages}</p></div>
+     <div><p>Languages: ${Object.values(country.languages)}</p></div>
     `;
      countryInfo.appendChild(countryCard);
  }
-
-
