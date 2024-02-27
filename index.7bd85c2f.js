@@ -3,6 +3,6 @@
         <h2>${t.name.official}</h2>
         <div><p>Capital: ${t.capital}</p></div>
       <div><p>Population: ${t.population}</p></div>
-     <div><p>Languages: ${Object.values(t.languages)}</p></div>
+     <div><div><p>Languages: ${Array.isArray(t.languages)?t.languages.join(", "):t.languages}</p></div></div>
     `,C.appendChild(e)}(e);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300))}();
-//# sourceMappingURL=index.a5c2a2e7.js.map
+//# sourceMappingURL=index.7bd85c2f.js.map
