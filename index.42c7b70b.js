@@ -3,6 +3,6 @@ function t(t){return t&&t.__esModule?t.default:t}var e,i,a="undefined"!=typeof g
         <h2>${t.name.official}</h2>
         <div><p>Capital: ${t.capital}</p></div>
       <div><p>Population: ${t.population}</p></div>
-     <div><div><p>Languages: ${Array.isArray(t.languages)?t.languages.join(", "):t.languages}</p></div></div>
-    `,C.appendChild(e)}(e[0]);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300));
-//# sourceMappingURL=index.ded53abc.js.map
+      <div><p>Languages: ${Object.values(t.languages).join(", ")}</p></div>
+      `,C.appendChild(e)}(e[0]);if(404===e.status){t(h).Notify.failure("Oops, there is no country with that name");return}})},300));
+//# sourceMappingURL=index.42c7b70b.js.map
