@@ -23,7 +23,7 @@ function handleSearch() {
             } if (data.length >= 2 && data.length <= 10) {
                 return displayCountryList(data);
             } if (data.length === 1) {
-               return displayCountryInfo(data);
+               return displayCountryInfo(data[0]);
             } if(data.status === 404){
                 Notiflix.Notify.failure('Oops, there is no country with that name');
         return;
@@ -48,15 +48,15 @@ function displayCountryList(countries) {
 }
 
 function displayCountryInfo(country) {
-     console.log(`Displaying country info:`, country);
-     clearResults();
-     const countryCard = document.createElement('div');
-     countryCard.innerHTML = `
+    console.log(`Displaying country info:`, country);
+    clearResults();
+    const countryCard = document.createElement('div');
+    countryCard.innerHTML = `
         <h1><img src="${country.flags.svg}" alt="${country.name.official}" width="24px"/><h1>
         <h2>${country.name.official}</h2>
         <div><p>Capital: ${country.capital}</p></div>
-      <div><p>Population: ${country.population}</p></div>
-     <div><div><p>Languages: ${Array.isArray(country.languages) ? country.languages.join(', ') : country.languages}</p></div></div>
+        <div><p>Population: ${country.population}</p></div>
+        <div><p>Languages: ${Array.isArray(country.languages) ? country.languages.join(', ') : JSON.stringify(country.languages)}</p></div>
     `;
-     countryInfo.appendChild(countryCard);
- }
+    countryInfo.appendChild(countryCard);
+}
